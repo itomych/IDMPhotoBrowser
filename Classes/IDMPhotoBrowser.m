@@ -400,8 +400,10 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
     }
     else
     {
+        resizableImageView.layer.cornerRadius = _senderViewForAnimation.layer.cornerRadius;
         [UIView animateWithDuration:_animationDuration animations:^{
             resizableImageView.layer.frame = finalImageViewFrame;
+            resizableImageView.layer.cornerRadius = 0;
         } completion:^(BOOL finished) {
             completion();
         }];
@@ -464,6 +466,7 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
     {
         [UIView animateWithDuration:_animationDuration animations:^{
             resizableImageView.layer.frame = senderViewOriginalFrame;
+            resizableImageView.layer.cornerRadius = _senderViewForAnimation.layer.cornerRadius;
         } completion:^(BOOL finished) {
             completion();
         }];
